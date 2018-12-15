@@ -1,6 +1,9 @@
+package codility.lessons.catepillar_method;
+
 import java.util.Arrays;
 
-class Solution {
+public class CountDistinctSlices {
+  
     public int solution(int M, int[] A) {
       int r = 0;
       final int MAX_VALUE = 1000000000;
@@ -13,7 +16,8 @@ class Solution {
       while(current_pos < N){
         int current_val                = A[current_pos];
         int current_val_prev_occurence = posVisited[current_val];
-        if(current_val_prev_occurence < start_pos){
+        
+        if(current_val_prev_occurence < start_pos){ // just go forward
           posVisited[current_val] = current_pos;
           current_pos++;
         } else {
@@ -34,6 +38,5 @@ class Solution {
       double d = (vd+1)/2*vd;
       r = (int) d;
       return r;
-    }    
+    }
 }
-
