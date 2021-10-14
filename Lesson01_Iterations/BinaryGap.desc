@@ -1,0 +1,7 @@
+Main points:
+- You need to convert int to form of zeros and ones
+-- that can be done by:
+---- Integer.toString(N, 2)
+---- Integer.toBinaryString(N);
+
+- You need to count zeros between ones which is trivial
