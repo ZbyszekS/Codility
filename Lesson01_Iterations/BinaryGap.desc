@@ -4,4 +4,7 @@ Main points:
 ---- Integer.toString(N, 2)
 ---- Integer.toBinaryString(N);
 
+- It's better to convert string of '0' and '1' to array of chars
+-- that can be done by: s.toCharArray();
+
 - You need to count zeros between ones which is trivial
