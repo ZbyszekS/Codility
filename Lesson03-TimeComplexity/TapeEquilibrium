@@ -1,1 +1,19 @@
+import static java.lang.Math.abs;
+import static java.lang.Math.min;
 
+public class TapeEquilibrium {
+    public int solution(int[] A) {
+        int o = Integer.MAX_VALUE;
+        int sp1 = 0;
+        int sp2 = 0;
+        for(int a : A){ 
+            sp2 += a;   // according to pre-conditions won't exceed MAX_VALUE
+        }
+        for(int i = 1; i < A.length; i++){
+            sp1 += A[i-1];
+            sp2 -= A[i-1];
+            o = min( abs(sp1 - sp2), o);
+        }
+        return o;
+    }
+}
