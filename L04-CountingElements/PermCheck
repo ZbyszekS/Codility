@@ -1,0 +1,18 @@
+import java.util.Arrays;
+
+public class PermCheck {
+    public int solution(int[] A) {
+        int N = A.length;
+        Arrays.sort(A);
+        int cV = 1;
+        for(int a: A){
+            if(a != cV){
+                return 0;
+            } 
+            else {
+                cV++;
+            }
+        }
+        return 1;
+    }
+}
