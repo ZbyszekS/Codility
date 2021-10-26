@@ -1,0 +1,22 @@
+import java.util.Arrays;
+
+public class MissingInteger {
+    public int solution(int[] A) {
+        int N = A.length;
+        int expectedValue = 1;
+        Arrays.sort(A);
+        for(int a : A){
+            if( a > 0 ){
+                if( a > expectedValue ){
+                    return expectedValue;
+                }
+                else {
+                    if( a == expectedValue ){
+                        expectedValue++;
+                    }
+                }
+            }
+        }
+        return expectedValue;
+    }
+}
