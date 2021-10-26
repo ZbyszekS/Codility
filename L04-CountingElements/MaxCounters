@@ -1,0 +1,24 @@
+import static java.lang.Integer.max;
+
+public class MaxCounters {
+    public int[] solution(int N, int[] A) {
+        int[] O           = new int[N];
+        int   tMax        = 0;
+        int   lMaxCounter = 0;
+        
+        for(int a: A){
+            if( a > N){
+                lMaxCounter = tMax;
+            } 
+            else {
+                O[a-1] = max( O[a-1], lMaxCounter ) +1;
+                tMax = max( tMax, O[a-1] );
+            }
+        }
+        for(int i = 0; i < N; i++){
+            O[i] = max( O[i], lMaxCounter );
+        }
+        return O;
+    }    
+
+}
