@@ -1,0 +1,24 @@
+public int solution(int[] A) {
+        int N = A.length;
+        
+        if(N == 1){
+            return A[0];
+        }
+        
+        Arrays.sort(A);
+        for( int i = 0; i < N; i++){
+            int curVal = A[i];
+            int count  = 0;
+
+            while( i < N && A[i] == curVal ){
+                count++;
+                i++;
+            }
+
+            if( count%2 != 0 ){
+                return curVal;
+            }
+            i--;
+        }
+        return 0; // dummy return
+    }   
