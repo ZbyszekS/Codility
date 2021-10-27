@@ -1,0 +1,19 @@
+import java.util.Arrays;
+
+public class Distinct {
+    public int solution(int[] A) {
+        if(A.length == 0){
+            return 0;
+        }
+        Arrays.sort(A);
+        int lastV = A[0] +1;
+        int o = 0;
+        for(int a: A){
+            if( a != lastV ){
+                o++;
+                lastV = a;
+            }
+        }
+        return o;
+    }
+}
