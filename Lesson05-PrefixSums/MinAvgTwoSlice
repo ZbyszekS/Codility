@@ -1,0 +1,35 @@
+/*
+First you need to realize that minimum slice can have ony 2 or 3 elements. No more.
+That's because if you wan to add smth to 2-elements slice to lower value of a new constructed slice, 
+a) - it would be 1 element or 
+b) - it would be another slice of "avg value" LOWER than original slice
+In case b), adding has no sense, cause added slice itself will have lover avg-value than sum of slices (oryginal + added)
+
+Se we need to check only slices of length 2 or 3
+*/
+
+import static java.lang.Integer.min;
+
+public class MinAvgTwoSlice {
+    public int solution(int[] A) {
+        int N = A.length;
+        int tavgMin = Integer.MAX_VALUE;
+        int o = 0;
+        int s2, s3;
+        for(int i = 0; i < N-1; i++ ){
+            s2 = (A[i]+A[i+1]) *3;
+            if(i == N-2){
+                if(s2 < tavgMin){
+                  o = i;  
+                }
+            } else {
+                s3 = (A[i] + A[i+1] + A[i+2]) *2;
+                if(s2 < tavgMin || s3 < tavgMin){
+                    tavgMin = min(s2, s3);
+                    o = i;
+                }
+            }
+        }
+        return o;
+    }
+}
