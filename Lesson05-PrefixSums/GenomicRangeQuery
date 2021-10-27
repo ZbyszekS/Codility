@@ -1,0 +1,48 @@
+public class GenomicRangeQuery {
+    public int[] solution(String S, int[] P, int[] Q) {
+        
+        char[] s = S.toCharArray();
+        int   N = s.length;
+        int   M = P.length;
+        int[] O = new int[M];
+        int[] A = new int[N+1];
+        int[] C = new int[N+1];
+        int[] G = new int[N+1];
+        int[] T = new int[N+1];
+        
+        for(int i = 0; i < N; i++){
+            A[i+1] = A[i] + num(s[i], 'A');
+            C[i+1] = C[i] + num(s[i], 'C');
+            G[i+1] = G[i] + num(s[i], 'G');
+            T[i+1] = T[i] + num(s[i], 'T');
+        }
+        for(int i = 0; i < M; i++){
+            int p = P[i];
+            int q = Q[i];
+            O[i] = minImp(p, q, A, C, G, T);
+        }
+        return O;
+    }
+
+    private int num(char c, char test) {
+        if(c == test){
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
+    private int minImp(int p, int q, int[] A, int[] C, int[] G, int[] T) {
+        if(A[q+1] - A[p] > 0){
+            return 1;
+        }
+        if(C[q+1] - C[p] > 0){
+            return 2;
+        }
+        if(G[q+1] - G[p] > 0){
+            return 3;
+        } else {
+            return 4;
+        }
+    }
+}
