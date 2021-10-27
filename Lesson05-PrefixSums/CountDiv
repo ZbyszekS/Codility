@@ -8,3 +8,4 @@ public class CountDiv {
         return all-pre;
     }
 }
+// The "catch" is: "0" is divisible by ANY number
