@@ -1,0 +1,15 @@
+import static java.lang.Integer.max;
+import java.util.Arrays;
+
+public class MaxProductOfThree {
+    public int solution(int[] A) {
+        int N = A.length;
+        if(N == 3){
+            return A[0]*A[1]*A[2];}
+
+        Arrays.sort(A);
+        int m1 = A[N-1] * A[N-2] * A[N-3];
+        int m2 = A[N-1] * A[0]   * A[1];
+        return max(m1, m2);
+    }
+}
