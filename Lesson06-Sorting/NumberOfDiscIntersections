@@ -1,0 +1,48 @@
+/* Tricky one, especially in time limits as a programming task
+The idea of solutions is:
+Count all circles with centers right to the current center and openings till (including) right edge of current circle
+Do the same for every next one.
+Cause we have a sum of all opennings (counting from left) on the right edge of cur. cir. we need to subtract all previous cir. cause they have centers befor  
+- so their openings should be subtracted from sum of opening on right edge 
+*/
+public class NumberOfDiscIntersections {
+    public int solution(int[] A) {
+        int o    = 0;              // output
+        int N    = A.length;       // 
+        int M    = N+2;            // size for table, 1 addition on every side
+        int[] O  = new int[M];     // open edges
+        int[] SO = new int[M+1];   // sum (from left) of open edges
+        
+        for(int i = 0; i < N; i++){
+            O[ leftEdge(i, A[i]) ]++;
+        }
+        for(int i = 0; i < M; i++){
+            SO[i+1] = SO[i] + O[i];
+        }
+        for(int i = 0; i < N; i++){
+            // sum of open till right edge -1 its own open - previous
+            o += SO[ rightEdge(i, A[i], N) +1 ] -1 - i;
+        }
+        if( o > 10_000_000)
+            return -1;
+
+        return o;
+    }
+
+    private int leftEdge(int i, int redius) {
+        if( i - redius < 0 )
+            return 0;
+        else
+            return i - redius +1;
+    }
+
+    private int rightEdge(int i, int radius, int N) {
+        int maxIndex  = N-1;
+        int maxRadius = maxIndex - i;
+        if( radius > maxRadius ){
+            return maxIndex+2; // because of shift and going beyond the edge
+        } else {
+            return i + radius + 1; // there is shift in "O" table
+        }
+    }
+}
