@@ -1,3 +1,6 @@
+// tricky thing,
+// you need to know some solution
+// misleading cause it has nothing to do with prime nubers
 public class CommonPrimeDivisors {
   
     public int solution(int[] A, int[] B) {
