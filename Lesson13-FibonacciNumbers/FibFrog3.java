@@ -12,7 +12,6 @@ public class FibFrogSimple implements IntFibFrog{
             
     public int solution(int[] A) {
         int[] visited;
-        minJumps = Integer.MAX_VALUE;
 
         int N = A.length;
         int M = N+2;
